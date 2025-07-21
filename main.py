@@ -14,16 +14,22 @@ driver.get("https://practicetestautomation.com/practice-test-login/")
 
 
 #Type username student into Username field
-element_labe1 = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div[1]/div[1]/input")
+username_locator = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div[1]/div[1]/input")
+username_locator.send_keys("student")
+
 #Type password Password123 into Password field
-element_labe1_2= driver.find_element(By.XPATH,'/html/body/div/div/section/section/div[1]/div[2]/input')
+password_locator= driver.find_element(By.XPATH,'/html/body/div/div/section/section/div[1]/div[2]/input')
+password_locator.send_keys("Password123")
 
 #Push Submit button
-element_button= driver.find_element(By.ID,'submit')
+submit_button_locator = driver.find_element(By.ID,'submit')
+submit_button_locator.click()
 
 #Verify new page URL contains practicetestautomation.com/logged-in-successfully/
 
 #Verify new page contains expected text ('Congratulations' or 'successfully logged in')
-
+test_locator= driver.find_element(By.TAG_NAME,'h1')
 #Verify button Log out is displayed on the new page
+log_out_button_locator= driver.find_element(By.LINK_TEXT,'Log out')
 
+time.sleep(5)
