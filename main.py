@@ -24,12 +24,24 @@ password_locator.send_keys("Password123")
 #Push Submit button
 submit_button_locator = driver.find_element(By.ID,'submit')
 submit_button_locator.click()
+time.sleep(3)
 
 #Verify new page URL contains practicetestautomation.com/logged-in-successfully/
+#para verficar el nuevo url de la pagina
+actual_url = driver.current_url
+#we put the assert 
+assert actual_url == "https://practicetestautomation.com/logged-in-successfully/"
+
 
 #Verify new page contains expected text ('Congratulations' or 'successfully logged in')
-test_locator= driver.find_element(By.TAG_NAME,'h1')
+text_locator= driver.find_element(By.TAG_NAME,'h1')
+#use ".text" for subtract to text of text locator
+actual_text= text_locator.text
+#we put the assert 
+assert actual_text == "Logged In Successfully"
+
 #Verify button Log out is displayed on the new page
 log_out_button_locator= driver.find_element(By.LINK_TEXT,'Log out')
-
+#we put the assert 
+assert log_out_button_locator.is_displayed()
 time.sleep(5)
