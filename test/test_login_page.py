@@ -2,9 +2,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 import time 
+import pytest
 
 
 class TestPositiveScenarios:
+    
+        @pytest.mark.login
         
         def test_positive_login(self):
             #open the driver 
