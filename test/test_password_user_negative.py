@@ -5,10 +5,10 @@ import time
 import pytest
 
 
-class TestPositiveScenarios:
+class TestNegativeScenarios:
     
         @pytest.mark.login
-        @pytest.mark.positive
+        @pytest.mark.negative
         
         def test_positive_login(self):
             #open the driver 
@@ -25,29 +25,18 @@ class TestPositiveScenarios:
 
             #Type password Password123 into Password field
             password_locator= driver.find_element(By.XPATH,'/html/body/div/div/section/section/div[1]/div[2]/input')
-            password_locator.send_keys("Password123")
+            password_locator.send_keys("Prueba")
 
             #Push Submit button
             submit_button_locator = driver.find_element(By.ID,'submit')
             submit_button_locator.click()
-            time.sleep(2)
-
-            #Verify new page URL contains practicetestautomation.com/logged-in-successfully/
-            #para verficar el nuevo url de la pagina
-            actual_url = driver.current_url
-            #we put the assert 
-            assert actual_url == "https://practicetestautomation.com/logged-in-successfully/"
-
-
+            time.sleep(1)
+            
             #Verify new page contains expected text ('Congratulations' or 'successfully logged in')
-            text_locator= driver.find_element(By.TAG_NAME,'h1')
+            text_locator= driver.find_element(By.ID,'error')
             #use ".text" for subtract to text of text locator
             actual_text= text_locator.text
             #we put the assert 
-            assert actual_text == "Logged In Successfully"
+            assert actual_text == "Your password is invalid!"
 
-            #Verify button Log out is displayed on the new page
-            log_out_button_locator= driver.find_element(By.LINK_TEXT,'Log out')
-            #we put the assert 
-            assert log_out_button_locator.is_displayed()
-            time.sleep(1)
+    
