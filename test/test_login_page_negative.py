@@ -26,11 +26,12 @@ class TestNegativeScenarios:
         #Type password Password123 into Password field
         password_locator= driver.find_element(By.XPATH,'/html/body/div/div/section/section/div[1]/div[2]/input')
         password_locator.send_keys("Password123")
+        time.sleep(1)
 
         #Push Submit button
         submit_button_locator = driver.find_element(By.ID,'submit')
         submit_button_locator.click()
-        time.sleep(3)
+        time.sleep(1)
 
 
         #Verify new page contains expected text ('Congratulations' or 'successfully logged in')
