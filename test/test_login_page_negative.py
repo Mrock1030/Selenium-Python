@@ -8,7 +8,9 @@ import pytest
 
 class TestNegativeScenarios:
     
-    @pytest.mark.logi_negative
+    @pytest.mark.login
+    @pytest.mark.negative
+    
     def test_negative_username(self):
         
         service = Service("/usr/bin/chromedriver")  # Ajusta si es necesario
