@@ -37,6 +37,6 @@ class TestNegativeScenarios:
             #use ".text" for subtract to text of text locator
             actual_text= text_locator.text
             #we put the assert 
-            assert actual_text == "Your password is invalid!"
+            assert actual_text == "Your password is invalid!", "Error message is not expected"
 
     
