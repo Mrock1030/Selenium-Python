@@ -30,7 +30,7 @@ class TestPositiveScenarios:
             #Push Submit button
             submit_button_locator = driver.find_element(By.ID,'submit')
             submit_button_locator.click()
-            time.sleep(2)
+            time.sleep(1)
 
             #Verify new page URL contains practicetestautomation.com/logged-in-successfully/
             #para verficar el nuevo url de la pagina
