@@ -4,13 +4,13 @@ from selenium.webdriver.common.by import By
 import time 
 import pytest
 
-@pytest.mark.fixture()
+@pytest.fixture()
 def driver():
 
     print ("Creating chorme driver")
-    service = Service("/usr/bin/chromedriver")  # Ajusta si es necesario
+    service = Service("/usr/bin/chromedriver") 
     my_driver = webdriver.Chrome(service=service)
-    #add yield if u want return something and keep write code in the some function
+    #add yield if u want return something and keep write code in the same function
     yield my_driver
     print ("Closing chorme driver")
     my_driver.quit()
@@ -20,9 +20,9 @@ class TestNegativeScenarios:
     @pytest.mark.login
     @pytest.mark.negative
     
-    def test_negative_username(self):
-        service = Service("/usr/bin/chromedriver")  # Ajusta si es necesario
-        driver = webdriver.Chrome(service=service)
+    def test_negative_username(self, driver):
+        #service = Service("/usr/bin/chromedriver")  # Ajusta si es necesario
+        #driver = webdriver.Chrome(service=service)
         
         #open Page
         driver.get("https://practicetestautomation.com/practice-test-login/")
@@ -53,14 +53,14 @@ class TestNegativeScenarios:
         
     @pytest.mark.login
     @pytest.mark.negative     
-    def test_negative_password(self):
-        #open the driver 
-        service = Service("/usr/bin/chromedriver")  # Ajusta si es necesario
-        driver = webdriver.Chrome(service=service)
-        time.sleep(5)
+    def test_negative_password(self, driver):
+      
+        #service = Service("/usr/bin/chromedriver")  # Ajusta si es necesario
+        #driver = webdriver.Chrome(service=service)
+        
         #go to the page
         driver.get("https://practicetestautomation.com/practice-test-login/")
-
+        time.sleep(1)
 
         #Type username student into Username field
         username_locator = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div[1]/div[1]/input")

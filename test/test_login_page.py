@@ -5,19 +5,30 @@ import time
 import pytest
 
 
+#add the new function about driver, if u want to repeat call driver in test
+@pytest.fixture()
+def driver():
+
+    print ("Creating chorme driver")
+    service = Service("/usr/bin/chromedriver") 
+    my_driver = webdriver.Chrome(service=service)
+    #add yield if u want return something and keep write code in the same function
+    yield my_driver
+    print ("Closing chorme driver")
+    my_driver.quit()
+    
+
 class TestPositiveScenarios:
     
         @pytest.mark.login
         @pytest.mark.positive
         
-        def test_positive_login(self):
-            #open the driver 
-            service = Service("/usr/bin/chromedriver")  # Ajusta si es necesario
-            driver = webdriver.Chrome(service=service)
-            time.sleep(5)
+        #add driver in function 
+        def test_positive_login(self, driver):
+                    
             #go to the page
             driver.get("https://practicetestautomation.com/practice-test-login/")
-
+            time.sleep(1)
 
             #Type username student into Username field
             username_locator = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div[1]/div[1]/input")
