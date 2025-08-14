@@ -15,7 +15,7 @@ class TestCases:
     
     def test_case_1(self, driver):
         
-        driver.maximize_window()  # 📌 Maximiza la ventana
+        driver.maximize_window()  
         driver.get("https://www.floristeriamundoflor.com/")
         time.sleep(3)
         
@@ -46,10 +46,9 @@ class TestCases:
         time.sleep(2)
         
         #come back to category love 
-        menu_button = driver.find_element(By.CSS_SELECTOR, ".menu-toggle")
-        menu_button.click()
-             
-        category_love= WebDriverWait(driver, 10).until(EC.element_to_be_clickable((By.LINK_TEXT, "Amor")))     
+        
+        wait = WebDriverWait(driver, 10)
+        category_love= wait.until(EC.element_to_be_clickable((By.LINK_TEXT, "Amor")))    
         category_love.click()
         
         #add second  product of category love
