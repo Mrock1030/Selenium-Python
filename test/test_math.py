@@ -4,7 +4,7 @@ import pytest
 def add_two_numbers(a,b):
     return a + b
       
-@pytest.mark.math_test   
+ 
 def test_small_numbers():
     assert add_two_numbers(1,2) == 3
     

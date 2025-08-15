@@ -65,8 +65,7 @@ class TestCases:
         
         #verify current url
         actual_url =driver.current_url
-        assert actual_url=="https://www.floristeriamundoflor.com/carrito/"
-        
+        assert actual_url=="https://www.floristeriamundoflor.com/carrito/"        
         #end to script
         print("Finalizo Correctamente")
         
@@ -75,6 +74,6 @@ class TestCases:
         
         
         
-        
-        
+
+
 
