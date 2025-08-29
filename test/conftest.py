@@ -17,6 +17,7 @@ def driver(request):
     if browser == "chrome":
         service = Service("/usr/bin/chromedriver") 
         my_driver = webdriver.Chrome(service=service)
+          
     elif browser == "firefox":
         my_driver= webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     else:
@@ -28,3 +29,7 @@ def driver(request):
     
     my_driver.quit()
     
+def pytest_addoption(parser):
+    parser.addoption(
+    "--browser", action="store", default="chrome", help="browser to excute test(chrome or firefox)")
+        
