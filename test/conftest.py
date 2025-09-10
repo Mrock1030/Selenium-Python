@@ -10,7 +10,7 @@ import pytest
 
 @pytest.fixture()
 def driver(request):
-    #found the browser
+    #found the browser|
     browser = request.config.getoption("--browser")
     print(f"Creating {browser} driver ")
     
@@ -24,8 +24,9 @@ def driver(request):
         raise TypeError (f"Expected chrome  or firefox, but got {browser} ")
     
     #add yield if u want return something and keep write code in the same function
+    #my_driver.implicitly_wait(10)
     yield my_driver
-    print (f"Closing {browser} driver")
+    print (f"Closing {browser} driver") 
     
     my_driver.quit()
     
