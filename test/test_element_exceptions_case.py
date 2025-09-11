@@ -59,6 +59,29 @@ class TestExceptions:
         confirmation_message_save =  message_save.text
         assert message_save.is_displayed(),"Row 2 was saved, but it's not"
         
+    def test_stale_element_reference_rxception(self,driver):
+        
+        #open search
+        driver.get("https://practicetestautomation.com/practice-test-exceptions/")
+        
+ 
+        #Verify text saved
+        
+        intructions_element = driver.find_element(By.ID, "instructions")
+        intructions_element =  intructions_element.text
+        
+        #Push add button
+        push_button_add = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div/div[1]/div/button[3]").click()
+        
+        #Find the instructions text element
+        wait= WebDriverWait(driver, 20)
+        assert wait.until(ec.invisibility_of_element_located((By.ID, "instructions"))),"instruction text element should be displayed"
+        
+        
+        
+        
+        
+        
     
         
         
