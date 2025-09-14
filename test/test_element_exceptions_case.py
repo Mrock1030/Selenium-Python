@@ -86,20 +86,16 @@ class TestExceptions:
 
         #Click Add button
         push_button_add = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div/div[1]/div/button[3]").click()
+   
+        #Wait for 3 seconds for the second input field to be displayed
+        wait= WebDriverWait(driver, 3)
+        second_label= wait.until(ec.invisibility_of_element_located((By.XPATH, "/html/body/div/div/section/section/div/div[3]/div/input")),"Failed waiting for Row 2 input to be visible")
         
-        try:
-            
-            #Wait for 3 seconds for the second input field to be displayed
-            wait= WebDriverWait(driver, 3)
-            second_label= wait.until(ec.presence_of_element_located((By.XPATH, "/html/body/div/div/section/section/div/div[3]/div/input")))
-            assert second_label,"instruction text element should be displayed"
-            
-        
-        except TimeoutException:
-            print("TimeoutException: El elemento no apareció en los 3 segundos establecidos.")
-            
+        # Verify second input field is displayed
+        assert second_label,"instruction text element should be displayed"
+
            
-        #Find the instructions text element
+   
         
         
         
