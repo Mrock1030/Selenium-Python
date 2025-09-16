@@ -2,6 +2,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         {
             "name": "Debug pytest Chrome",
             "type": "python",
@@ -10,9 +11,12 @@
             "args": [
                 "${file}",
                 "--browser=chrome",
-                "--html=${workspaceFolder}/test/reports/report.html"
+                "--html=${workspaceFolder}/test/reports/report.html",
+                "--self-contained-html"
+
             ]
         },
+        
         {
             "name": "Debug  pytest Firefox",
             "type": "python",
@@ -21,7 +25,9 @@
             "args": [
                 "${file}",
                 "--browser=firefox",
-                "--html=${workspaceFolder}/test/reports/report.html"
+                "--html=${workspaceFolder}/test/reports/report.html",
+                "--self-contained-html"
+
             ]
         },
 
