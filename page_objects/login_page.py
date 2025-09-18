@@ -4,7 +4,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as ec
 
 
-class LoginPage:
+class LoginPage(BasePage):
     __url="https://practicetestautomation.com/practice-test-exceptions/"
     __username_field =(By.XPATH, "/html/body/div/div/section/section/div[1]/div[1]/input")
     __password_field= (By.XPATH,'/html/body/div/div/section/section/div[1]/div[2]/input')
