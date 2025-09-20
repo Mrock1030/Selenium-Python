@@ -2,7 +2,13 @@
 from selenium.webdriver.common.by import By
 import time 
 import pytest
-import page_objects.login_page.LoginPage(Basepage)
+from page_objects.login_page import LoginPage
+from page_objects.base_page import BasePage
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as ec
+from selenium.common.exceptions import TimeoutException
+
+
 
 
 class TestPositiveScenarios:
