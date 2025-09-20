@@ -6,15 +6,13 @@ class BasePage:
         self._driver = driver
         
     def _find(self, locator:tuple)-> WebElement:
-        self._driver.find_element(*locator)
+        return self._driver.find_element(*locator)
         
-    def _type(self,locator:tuple, text:str):
+    def _type(self,locator:tuple, text:str, time:int=10):
+        self.wait.until_element_is_visible(locator,time)
         self._find(locator).send_keys(text)
     
-    def wait_until_element_is_visible(self,locator:tuple, time:int=10):
-        wait =WebDriverWait(self._driver, time)
-        wait.until(ec.invisibility_of_element_located(locator))
-    
+
     def _click(self, locator:tuple, time: int=10):
         self._wait_until_element_is_visible(locator,time)
         self._find(locator).click()
@@ -28,6 +26,15 @@ class BasePage:
             return self._find(locator).is_displayed()
         except NoSuchElementException:
             return False 
+        
+    def _open_url(self,url:str):
+        self.driver.get(url)
+        
+    def _get_text(self,locator:tuple, time: int=10) ->str:
+        self._wait_until_element_is_visible(locator,time)
+        return self._find(locator).text
+        
+        
         
         
     

@@ -2,6 +2,7 @@
 from selenium.webdriver.common.by import By
 import time 
 import pytest
+import page_objects.login_page.LoginPage(Basepage)
 
 
 class TestPositiveScenarios:
@@ -11,23 +12,14 @@ class TestPositiveScenarios:
         
         #add driver in function 
         def test_positive_login(self, driver):
+            
+            login_page = LoginPage(driver)
+            
                     
-            #go to the page
-            driver.get("https://practicetestautomation.com/practice-test-login/")
-            time.sleep(1)
-
-            #Type username student into Username field
-            username_locator = driver.find_element(By.XPATH, "/html/body/div/div/section/section/div[1]/div[1]/input")
-            username_locator.send_keys("student")
-
-            #Type password Password123 into Password field
-            password_locator= driver.find_element(By.XPATH,'/html/body/div/div/section/section/div[1]/div[2]/input')
-            password_locator.send_keys("Password123")
-
+            #Open Page
+            login_page.open_url()
             #Push Submit button
-            submit_button_locator = driver.find_element(By.ID,'submit')
-            submit_button_locator.click()
-            time.sleep(1)
+            login_page.exucte_login("student","Password123")
 
             #Verify new page URL contains practicetestautomation.com/logged-in-successfully/
             #para verficar el nuevo url de la pagina
